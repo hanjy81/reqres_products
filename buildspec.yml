@@ -1,5 +1,5 @@
 version: 0.2
-    AA
+    
 env:
   variables:
     IMAGE_REPO_NAME: "hanjy81-corona"
