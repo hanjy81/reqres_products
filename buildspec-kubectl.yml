@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    _PROJECT_NAME: "user28-products"
+    _PROJECT_NAME: "hanjy81-corona"
 
 phases:
   install:
@@ -43,36 +43,36 @@ phases:
           apiVersion: v1
           kind: Service
           metadata:
-            name: $_PROJECT_NAME
+            name: $hanjy81-test-covid
             labels:
-              app: $_PROJECT_NAME
+              app: $hanjy81-test-covid
           spec:
             ports:
               - port: 8080
                 targetPort: 8080
             selector:
-              app: $_PROJECT_NAME
+              app: $hanjy81-test-covid
           EOF
       - |
           cat  <<EOF | kubectl apply -f -
           apiVersion: apps/v1
           kind: Deployment
           metadata:
-            name: $_PROJECT_NAME
+            name: $hanjy81-test-covid
             labels:
-              app: $_PROJECT_NAME
+              app: $hanjy81-test-covid
           spec:
             replicas: 1
             selector:
               matchLabels:
-                app: $_PROJECT_NAME
+                app: $hanjy81-test-covid
             template:
               metadata:
                 labels:
-                  app: $_PROJECT_NAME
+                  app: $hanjy81-test-covid
               spec:
                 containers:
-                  - name: $_PROJECT_NAME
+                  - name: $hanjy81-test-covid
                     image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$_PROJECT_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION
                     ports:
                       - containerPort: 8080
@@ -94,6 +94,6 @@ phases:
                       failureThreshold: 5
           EOF
 
-cache:
-  paths:
-    - '/root/.m2/**/*'
+#cache:
+ # paths:
+  #  - '/root/.m2/**/*'
