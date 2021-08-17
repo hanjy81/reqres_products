@@ -1,8 +1,8 @@
 version: 0.2
-    
+
 env:
   variables:
-    IMAGE_REPO_NAME: "hanjy81-product"
+    _PROJECT_NAME: "hanjy81-product"
 
 phases:
   install:
